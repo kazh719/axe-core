@@ -211,6 +211,26 @@ describe('is-focusable', function () {
         axe.commons.dom.isFocusable(el, { programmatically: false })
       );
     });
+
+    it('should return false for negative tabindex with option `programmatically: true`', function () {
+      fixture.innerHTML = '<button id="target" tabindex="-1"></button>';
+      var el = document.getElementById('target');
+      flatTreeSetup(fixture);
+
+      assert.isFalse(
+        axe.commons.dom.isFocusable(el, { programmatically: true })
+      );
+    });
+
+    it('should return true for negative tabindex with option `programmatically: false`', function () {
+      fixture.innerHTML = '<button id="target" tabindex="-1"></button>';
+      var el = document.getElementById('target');
+      flatTreeSetup(fixture);
+
+      assert.isTrue(
+        axe.commons.dom.isFocusable(el, { programmatically: false })
+      );
+    });
   });
 
   describe('dom.isNativelyFocusable', function () {
