@@ -222,6 +222,16 @@ describe('is-focusable', function () {
       );
     });
 
+    it('should return false for negative tabindex < -1 with option `programmatically: true`', function () {
+      fixture.innerHTML = '<button id="target" tabindex="-5"></button>';
+      var el = document.getElementById('target');
+      flatTreeSetup(fixture);
+
+      assert.isFalse(
+        axe.commons.dom.isFocusable(el, { programmatically: true })
+      );
+    });
+
     it('should return true for negative tabindex on natively focusable element with option `programmatically: false`', function () {
       fixture.innerHTML = '<button id="target" tabindex="-1"></button>';
       var el = document.getElementById('target');
