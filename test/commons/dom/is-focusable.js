@@ -192,7 +192,7 @@ describe('is-focusable', function () {
       assert.isFalse(axe.commons.dom.isFocusable(el));
     });
 
-    it('should return false for negative tabindex with option `programmatically: true`', function () {
+    it('should return false for negative tabindex on non-natively focusable element with option `programmatically: true`', function () {
       fixture.innerHTML = '<div id="target" tabindex="-1"></div>';
       var el = document.getElementById('target');
       flatTreeSetup(fixture);
@@ -202,7 +202,7 @@ describe('is-focusable', function () {
       );
     });
 
-    it('should return true for negative tabindex with option `programmatically: false`', function () {
+    it('should return true for negative tabindex on non-natively focusable element with option `programmatically: false`', function () {
       fixture.innerHTML = '<div id="target" tabindex="-1"></div>';
       var el = document.getElementById('target');
       flatTreeSetup(fixture);
@@ -212,7 +212,7 @@ describe('is-focusable', function () {
       );
     });
 
-    it('should return false for negative tabindex with option `programmatically: true`', function () {
+    it('should return false for negative tabindex on natively focusable element with option `programmatically: true`', function () {
       fixture.innerHTML = '<button id="target" tabindex="-1"></button>';
       var el = document.getElementById('target');
       flatTreeSetup(fixture);
@@ -222,7 +222,7 @@ describe('is-focusable', function () {
       );
     });
 
-    it('should return true for negative tabindex with option `programmatically: false`', function () {
+    it('should return true for negative tabindex on natively focusable element with option `programmatically: false`', function () {
       fixture.innerHTML = '<button id="target" tabindex="-1"></button>';
       var el = document.getElementById('target');
       flatTreeSetup(fixture);
